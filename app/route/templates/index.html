@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h1>Task Manager</h1>
+    <form action="/add" method="POST">
+        <input type="text" name="title" placeholder="Task Title" required>
+        <input type="text" name="description" placeholder="Task Description" required>
+        <input type="number" name="time" placeholder="Time (minutes)" required>
+        <button type="submit">Add Task</button>
+    </form>
+    <a href="{{ url_for('auth.logout') }}"><button type="submit" >Logout</button></a>
+    <ul>
+        {% if current_user.is_authenticated %}
+        {% for taskr in tasks %}
+            <li>
+                {{ taskr.title }} - {{ taskr.deadline.strftime('%Y-%m-%d %H:%M:%S') }}
+                {% if not taskr.completed %}
+                    <a href="{{ url_for('task.complete_task', task_id=taskr.id) }}">Complete</a>
+                {% endif %}
+                <a href="{{ url_for('task.delete_task', task_id=taskr.id) }}">Delete</a>
+            </li>
+        {% endfor %}
+        {% else %}
+        <p>Welcome to Task Queue, <a href="{{ url_for('auth.register') }}">Register</a> an account today or <a href="{{ url_for('auth.register') }}">Login</a> </p>
+        {% endif %}
+    </ul>
+
+
+{% endblock content %}
+

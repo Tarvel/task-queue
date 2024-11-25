@@ -1,0 +1,8 @@
+.env
+/__pycache__
+/instance
+fly.toml
+/venv
+.github
+docker-compose.yml
+Dockerfile
