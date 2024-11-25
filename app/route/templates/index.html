@@ -2,6 +2,7 @@
 {% block content %}
 
     <h1>Task Manager</h1>
+    {% if current_user.is_authenticated %}
     <form action="/add" method="POST">
         <input type="text" name="title" placeholder="Task Title" required>
         <input type="text" name="description" placeholder="Task Description" required>
@@ -10,7 +11,7 @@
     </form>
     <a href="{{ url_for('auth.logout') }}"><button type="submit" >Logout</button></a>
     <ul>
-        {% if current_user.is_authenticated %}
+        
         {% for taskr in tasks %}
             <li>
                 {{ taskr.title }} - {{ taskr.deadline.strftime('%Y-%m-%d %H:%M:%S') }}
