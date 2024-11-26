@@ -7,7 +7,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from flask_login import current_user
 from dotenv import load_dotenv
-from app.config import password, sender_email
+from config import password, sender_email
 
 
 load_dotenv()
