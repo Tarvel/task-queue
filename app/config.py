@@ -14,3 +14,7 @@ class Config:
     SECRET_KEY = os.getenv('SECRET_KEY')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     DEBUG = True
+
+
+password = os.getenv('EMAIL_PASSWORD')
+sender_email = os.getenv('SENDER_EMAIL')

@@ -6,7 +6,8 @@ import smtplib, os, time
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from flask_login import current_user
-from dotenv import load_dotenv  
+from dotenv import load_dotenv
+from app.config import password, sender_email
 
 
 load_dotenv()
@@ -24,8 +25,8 @@ def send_notif(self, tasker, user_id):
         smtp_server = "smtp.gmail.com"
         smtp_port = 465
 
-        password = os.getenv('EMAIL_PASSWORD')
-        sender_email = os.getenv('SENDER_EMAIL')
+        password = password
+        sender_email = sender_email
         receiver_email = user.email
 
         if not password or not sender_email or not receiver_email:
