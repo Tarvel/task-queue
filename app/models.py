@@ -22,4 +22,4 @@ class Tasks(db.Model, UserMixin):
     completed = db.Column(db.Boolean, default=False, nullable=False)
     description = db.Column(db.String, nullable=False)
     deadline = db.Column(db.DateTime, default=datetime.utcnow)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    user_id = db.Column(db.String, db.ForeignKey('user.id'), nullable=False)

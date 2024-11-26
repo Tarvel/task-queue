@@ -1,8 +1,8 @@
-"""first migration
+"""Fix user_id type to match User.id
 
-Revision ID: 3b4188bf65f2
+Revision ID: 8d246f9c711d
 Revises: 
-Create Date: 2024-11-25 23:45:43.590513
+Create Date: 2024-11-26 01:58:28.874582
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '3b4188bf65f2'
+revision = '8d246f9c711d'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -34,7 +34,7 @@ def upgrade():
     sa.Column('completed', sa.Boolean(), nullable=False),
     sa.Column('description', sa.String(), nullable=False),
     sa.Column('deadline', sa.DateTime(), nullable=True),
-    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('user_id', sa.String(), nullable=False),
     sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
